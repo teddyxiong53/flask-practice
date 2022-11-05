@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<title>Todo</title>
+<h1>todo</h1>
+{% for category, message in get_flashed_messages(with_categories=true) %}
+<p class="flask {{category}}-flash">
+    {{message}}
+</p>
+{% endfor %}
+{% block body %}
+
+{% endblock %}

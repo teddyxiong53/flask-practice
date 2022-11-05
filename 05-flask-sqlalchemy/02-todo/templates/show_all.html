@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1>
+    all items
+</h1>
+<form action="{{ url_for('update_done') }}" method="post">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Done?</th>
+                <th>Text</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %}
+                <tr>
+                    <td>{{todo.id}}</td>
+                    <td>{{todo.title}}</td>
+                    
+                    <td><input type="checkbox" name="done.{{todo.id}}" {{"checked if todo.done"}}}></td>
+                    <td>{{todo.text}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td><a href="{{url_for('new')}}">New</a></td>
+                <td><input type="submit" value="Save"></td>
+            </tr>
+        </tfoot>
+    </table>
+</form>
+{% endblock %}
