@@ -69,6 +69,18 @@ python app.py
 
 这个是生成bootstrap风格的导航栏的。
 
+但是默认只有靠左对齐的风格的。
+
+一般会把登陆注册这些放在右侧。有没有办法进行定制呢？
+
+这里有个讨论：
+
+https://github.com/mbr/flask-bootstrap/issues/126
+
+这个gist是一个实现。
+
+https://gist.github.com/thedod/eafad9458190755ce943e7aa58355934#file-readme-md
+
 ## 03-flask-bootstrap-single 
 
 这个实际是把这部分代码写了一遍。把里面的错误解决掉。

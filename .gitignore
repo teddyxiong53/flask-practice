@@ -1,3 +1,4 @@
 *.patch
 *.sqlite
 __pycache__
+venv

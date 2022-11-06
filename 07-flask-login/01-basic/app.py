@@ -1,5 +1,5 @@
 
-from flask_login import LoginManager, UserMixin, login_user
+from flask_login import LoginManager, UserMixin, login_user, login_required
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
@@ -10,6 +10,9 @@ app  = Flask(__name__)
 app.secret_key = '123'
 
 login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.session_protection = 'strong'
+
 login_manager.init_app(app)
 
 class User(UserMixin):
@@ -41,8 +44,8 @@ def login():
     return render_template('login.html', form=form)
 
 @app.route('/protected')
-@flask_login.login_required
+@login_required
 def protected():
     return 'login as ' + flask_login.current_user.id
 
-app.run(debug=True)
+app.run(host='0.0.0.0', debug=True)
