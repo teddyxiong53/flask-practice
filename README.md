@@ -81,6 +81,53 @@ https://github.com/mbr/flask-bootstrap/issues/126
 
 https://gist.github.com/thedod/eafad9458190755ce943e7aa58355934#file-readme-md
 
+我加上测试了一下，的确是可以的。
+
+另外一个问题，就是怎么动态添加或者去掉元素呢？
+
+例如根据登陆状态来确定靠右的显示的是登陆还是退出。
+
+flask-nav的确是很久没有更新了。2017年后就没有提交了。
+
+https://pythonhosted.org/flask-nav/advanced-topics.html#dynamic-construction
+
+其实flask-nav本身已经支持这个特性的。
+
+所以这个文档还是需要仔细看一下。
+
+动态的创建和去除，就很简单，就是register_element的第二个参数，传递一个函数对象过来。
+
+任何函数里，根据判断创建不同的Navbar对象返回。
+
+```
+def top_nav():
+	# 如果登陆了。返回一个不同的。
+    return ExtendedNavbar(
+    title=View('hanliang', 'index'),
+    root_class = 'navbar navbar-inverse',
+    items = (
+        View('aa', 'index'),
+        View('bb', 'about'),
+        Subgroup(
+            'Product',
+            View('cc', 'products', product='cc'),
+            Separator(),
+            Text("hhhhhhh"),
+            View('dd', 'products', product='dd')
+        ),
+        Link('tech support', dest='http://www.baidu.com'),
+    ),
+    right_items=(
+            View('Signup', 'index'),
+    )
+)
+# 下面这个top，是id。
+# 在html里，会通过nav.top这样来引用到这个变量。
+nav.register_element('top', top_nav)
+```
+
+
+
 ## 03-flask-bootstrap-single 
 
 这个实际是把这部分代码写了一遍。把里面的错误解决掉。

@@ -4,10 +4,8 @@ from flask_nav.elements import Navbar, View, Subgroup, Link, Text, Separator
 from flask_bootstrap import Bootstrap
 from nav import nav, ExtendedNavbar, init_custom_nav_renderer
 
-
-# 下面这个top，是id。
-# 在html里，会通过nav.top这样来引用到这个变量。
-nav.register_element('top', ExtendedNavbar(
+def top_nav():
+    return ExtendedNavbar(
     title=View('hanliang', 'index'),
     root_class = 'navbar navbar-inverse',
     items = (
@@ -25,7 +23,10 @@ nav.register_element('top', ExtendedNavbar(
     right_items=(
             View('Signup', 'index'),
     )
-))
+)
+# 下面这个top，是id。
+# 在html里，会通过nav.top这样来引用到这个变量。
+nav.register_element('top', top_nav)
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -44,3 +45,4 @@ def products(product):
     return str(product)
 
 app.run(host='0.0.0.0', debug=True)
+
