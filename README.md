@@ -167,3 +167,8 @@ https://flask-security.readthedocs.io/en/3.0.0/quickstart.html
 
 会自动跳转到登陆界面，而不需要自己写这个登陆界面。
 
+## 07-flask-login
+
+登陆功能就用这个就够了。
+
+https://flask-login.readthedocs.io/en/latest/
